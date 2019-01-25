@@ -7,8 +7,8 @@ import json
 from watson_developer_cloud import VisualRecognitionV3
 
 visual_recognition = VisualRecognitionV3(
-    version_apy,
-    iam_apikey=service_apikey)
+    '2018-03-19',
+    iam_apikey=visualrecognition_apikey)
 
 with open('../../datasets/imagens/lions/imagem_test1.jpg', 'rb') as images_file:
     classes = visual_recognition.classify(
