@@ -1,2 +1,11 @@
-# hacks-cognitives-plataforms
-Hacks for Cognitives Plataforms
+# hacks-watson
+
+Hacks for Cognitive Plataform
+
+#Watson Cognitive Plataform
+
+- Visual Recognitive 
+- Translator 
+
+
+ 
