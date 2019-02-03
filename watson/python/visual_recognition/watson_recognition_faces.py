@@ -9,7 +9,7 @@ visual_recognition = VisualRecognitionV3(
     '2018-03-19',
     iam_apikey=visualrecognition_apikey)
 
-with open('../../../datasets/imagens/faces/face1.jpeg', 'rb') as images_file:
+with open('/home/marcio/Downloads/turma_IA_FIAP.jpeg', 'rb') as images_file:
     faces = visual_recognition.detect_faces(images_file).get_result()
 print(json.dumps(faces, indent=2))
 

@@ -1,8 +1,8 @@
 # Credential for Visual Recognitive 
-visualrecognition_apikey='yourkeyapy'
+visualrecognition_apikey=''
 
 # Credential for Language Translator
-language_apikey='yourkeyapy'
+language_apikey=''
 
 
 
