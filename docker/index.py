@@ -4,4 +4,4 @@ app = Flask(__name__)
 def hello():
     return "Olá Mundo!"
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=int("5000"), debug=True)
+    app.run(host="0.0.0.0", port=int("5000"), debug=True)
