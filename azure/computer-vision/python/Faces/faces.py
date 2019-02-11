@@ -1,52 +1,12 @@
-headers = {
-    # Request headers
-    'Content-Type': 'application/json',
-    'Ocp-Apim-Subscription-Key': '{subscription key}',
-}
+import cognitive_face as CF
 
-params = urllib.urlencode({
-    # Request parameters
-    'returnFaceId': 'true',
-    'returnFaceLandmarks': 'false',
-    'returnFaceAttributes': '{string}',
-})
+KEY = ''  # Replace with a valid subscription key (keeping the quotes in place).
+CF.Key.set(KEY)
 
-try:
-    conn = httplib.HTTPSConnection('westus.api.cognitive.microsoft.com')
-    conn.request("POST", "/face/v1.0/detect?%s" % params, "{body}", headers)
-    response = conn.getresponse()
-    data = response.read()
-    print(data)
-    conn.close()
-except Exception as e:
-    print("[Errno {0}] {1}".format(e.errno, e.strerror))
+BASE_URL = 'https://centralus.api.cognitive.microsoft.com/face/v1.0/'  # Replace with your regional Base URL
+CF.BaseUrl.set(BASE_URL)
 
-####################################
-
-########### Python 3.2 #############
-import http.client, urllib.request, urllib.parse, urllib.error, base64
-
-headers = {
-    # Request headers
-    'Content-Type': 'application/json',
-    'Ocp-Apim-Subscription-Key': '{subscription key}',
-}
-
-params = urllib.parse.urlencode({
-    # Request parameters
-    'returnFaceId': 'true',
-    'returnFaceLandmarks': 'false',
-    'returnFaceAttributes': '{string}',
-})
-
-try:
-    conn = http.client.HTTPSConnection('westus.api.cognitive.microsoft.com')
-    conn.request("POST", "/face/v1.0/detect?%s" % params, "{body}", headers)
-    response = conn.getresponse()
-    data = response.read()
-    print(data)
-    conn.close()
-except Exception as e:
-    print("[Errno {0}] {1}".format(e.errno, e.strerror))
-
-####################################
+# You can use this example JPG or replace the URL below with your own URL to a JPEG image.
+img_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
+faces = CF.face.detect(img_url)
+print(faces)
