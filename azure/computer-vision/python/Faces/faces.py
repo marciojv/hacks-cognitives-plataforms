@@ -1,6 +1,6 @@
 import cognitive_face as CF
 
-KEY = ''  # Replace with a valid subscription key (keeping the quotes in place).
+KEY = '9b827cf956d84775be2cc806b22c0ec0'  # Replace with a valid subscription key (keeping the quotes in place).
 CF.Key.set(KEY)
 
 BASE_URL = 'https://centralus.api.cognitive.microsoft.com/face/v1.0/'  # Replace with your regional Base URL

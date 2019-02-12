@@ -3,7 +3,7 @@ import requests
 from io import BytesIO
 from PIL import Image, ImageDraw
 
-KEY = ''  # Replace with a valid subscription key (keeping the quotes in place).
+KEY = '269aa4998ee542a39d5aafced90ee65a'  # Replace with a valid subscription key (keeping the quotes in place).
 CF.Key.set(KEY)
 
 BASE_URL = 'https://centralus.api.cognitive.microsoft.com/face/v1.0/'  # Replace with your regional Base URL
