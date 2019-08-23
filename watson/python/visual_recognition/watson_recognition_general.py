@@ -4,11 +4,14 @@ sys.path.append('../')
 from credencial_apykey import *
 import json
 
-from watson_developer_cloud import VisualRecognitionV3
+from ibm_watson import VisualRecognitionV3
 
 visual_recognition = VisualRecognitionV3(
     '2018-03-19',
     iam_apikey=visualrecognition_apikey)
+
+#desabilita SSL
+#visual_recognition.disable_SSL_verification()
 
 with open('../../../datasets/imagens/lions/imagem_test1.jpg', 'rb') as images_file:
     classes = visual_recognition.classify(
