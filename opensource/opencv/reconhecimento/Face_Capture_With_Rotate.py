@@ -15,7 +15,7 @@ face_cascade = cv2.CascadeClassifier('Haar/haarcascade_frontalcatface.xml') # Cl
 ID = NameFind.AddName()
 Count = 0
 cap = cv2.VideoCapture(0) # Camera object
-
+#cap = cv2.VideoCapture('../datasets/videos/professor2.mp4')
 while Count < 50:
     ret, img = cap.read()
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)                                                    # Convert the Camera to grayScale
