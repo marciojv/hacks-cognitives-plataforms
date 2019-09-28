@@ -15,7 +15,7 @@ eye_cascade = cv2.CascadeClassifier('Haar/haarcascade_eye.xml') # Classifier "ey
 
 ID = NameFind.AddName()
 Count = 0
-cap = cv2.VideoCapture(0)                                                                           # Camera object
+cap = cv2.VideoCapture(0) # Camera object
 
 while Count < 50:
     ret, img = cap.read()
