@@ -18,6 +18,8 @@ by @ambientelivre Plataform Cognitive Class
  - Pentaho Machine Intelligence
  - Pentaho Data Integration 
  - OpenCV com Python
+   instale 
+    python -m pip install opencv-contrib-python
  
 
 

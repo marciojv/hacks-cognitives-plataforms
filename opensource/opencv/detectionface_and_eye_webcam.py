@@ -2,12 +2,11 @@ import numpy as np #importa bibliotaca numpy e renomaia para np
 import cv2         # importa biblioteca OpenCV 
 
 #Use este para entrada via WebCam
-#cap = cv2.VideoCapture(0) # Captura como entrada Video da Camera Principal do Computador
+cap = cv2.VideoCapture(0) # Captura como entrada Video da Camera Principal do Computador
 
-#cap = cv2.VideoCapture('datasets/videos/hack-linx.mp4')
-cap = cv2.VideoCapture('datasets/videos/torvalds.mp4')
 
 face_cascade = cv2.CascadeClassifier('haarcascade/haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier('haarcascade/haarcascade_eye.xml')
 
 while(True):
 	_, frame = cap.read()
@@ -16,10 +15,18 @@ while(True):
 	faces = face_cascade.detectMultiScale(gray, 1.1, 5) # 1.3 e a velocidade de captura 
 	for (x,y,w,h) in faces:
 		cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
+		roi_gray = gray[y:y+h, x:x+w]
+		roi_color = frame[y:y+h, x:x+w]
+		eyes = eye_cascade.detectMultiScale(roi_gray)
+		for (ex,ey,ew,eh) in eyes:
+			cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
+
+
 
 	cv2.imshow('frame',frame)
 
 	key = cv2.waitKey(1)   # fica monutorando teclas clicadas , 1 he milisegundos de espera
+
 	if key == 27:  # aborta se for a tela ESC
 		break
 
