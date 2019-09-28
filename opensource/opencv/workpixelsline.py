@@ -8,10 +8,15 @@ print imagem.shape
 #      Canal Vermelho 2 , Canal Verde 1    , Canal Azul 0 
 print imagem.item(0,0,2),imagem.item(0,0,1),imagem.item(0,0,0)
 
-# Alterando 1 Pixel na posicão 0,0 para cor vermalha 
-imagem.itemset((0,0,2),255)
-imagem.itemset((0,0,1),0)
-imagem.itemset((0,0,0),0)
+alturaImagem =  imagem.shape[0]
 
+# Adiconando linha na cor vermelha com 1 pixel de largura
+posicaopixel = 0
+while ( posicaopixel < alturaImagem ):
+	imagem.itemset((posicaopixel,0,2),255)
+	imagem.itemset((posicaopixel,0,1),0)
+	imagem.itemset((posicaopixel,0,0),0)
+	posicaopixel= posicaopixel+1
+  
 cv2.imwrite("results/imagemvermelha.jpeg",imagem)
 
