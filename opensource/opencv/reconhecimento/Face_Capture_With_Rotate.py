@@ -11,7 +11,6 @@ WHITE = [255, 255, 255]
 #   import the Haar cascades for face ditection
 
 face_cascade = cv2.CascadeClassifier('Haar/haarcascade_frontalcatface.xml') # Classifier "frontal-face" Haar Cascade
-eye_cascade = cv2.CascadeClassifier('Haar/haarcascade_eye.xml') # Classifier "eye" Haar Cascade
 
 ID = NameFind.AddName()
 Count = 0
