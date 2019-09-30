@@ -22,6 +22,8 @@ by @ambientelivre Plataform Cognitive Class
     python -m pip install opencv-contrib-python
  
 
+Exemplos 
+ https://thispersondoesnotexist.com/ 
 
 
 
