@@ -41,13 +41,15 @@ def drawFaceRectangles() :
     draw = ImageDraw.Draw(img)
     for face in detected_faces:
         draw.rectangle(getRectangle(face), outline='red')
+    #Para colab adicine este no final da funcao drawFaceRectangles
+    #return img    
+
 
 # Display the image in the default image browser.
     #img.show()
 
 # Uncomment this to show the face rectangles.
-
-#drawFaceRectangles()
+drawFaceRectangles()
 
 
 
