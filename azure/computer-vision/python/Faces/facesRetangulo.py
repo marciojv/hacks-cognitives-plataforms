@@ -1,39 +1,53 @@
-import cognitive_face as CF
+import asyncio
+import io
+import glob
+import os
+import sys
+import time
+import uuid
 import requests
+from urllib.parse import urlparse
 from io import BytesIO
 from PIL import Image, ImageDraw
+from azure.cognitiveservices.vision.face import FaceClient
+from msrest.authentication import CognitiveServicesCredentials
+from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person
 
-KEY = '269aa4998ee542a39d5aafced90ee65a'  # Replace with a valid subscription key (keeping the quotes in place).
-CF.Key.set(KEY)
+KEY = ""
+ENDPOINT = ""
 
-BASE_URL = 'https://centralus.api.cognitive.microsoft.com/face/v1.0/'  # Replace with your regional Base URL
-CF.BaseUrl.set(BASE_URL)
+face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
 
-# You can use this example JPG or replace the URL below with your own URL to a JPEG image.
-img_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
-faces = CF.face.detect(img_url)
-print(faces)
 
-#Convert width height to a point in a rectangle
+single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
+single_image_name = os.path.basename(single_face_image_url)
+
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
+if not detected_faces:
+    raise Exception('No face detected from image {}'.format(single_image_name))
+
 def getRectangle(faceDictionary):
-    rect = faceDictionary['faceRectangle']
-    left = rect['left']
-    top = rect['top']
-    bottom = left + rect['height']
-    right = top + rect['width']
-    return ((left, top), (bottom, right))
+    rect = faceDictionary.face_rectangle
+    left = rect.left
+    top = rect.top
+    right = left + rect.width
+    bottom = top + rect.height    
+    return ((left, top), (right, bottom))
 
-#Download the image from the url
-response = requests.get(img_url)
-img = Image.open(BytesIO(response.content))
+def drawFaceRectangles() :
+    response = requests.get(single_face_image_url)
+    img = Image.open(BytesIO(response.content))
+    print('Drawing rectangle around face... see popup for results.')
+    draw = ImageDraw.Draw(img)
+    for face in detected_faces:
+        draw.rectangle(getRectangle(face), outline='red')
 
-#For each face returned use the face rectangle and draw a red box.
-draw = ImageDraw.Draw(img)
-for face in faces:
-    draw.rectangle(getRectangle(face), outline='red')
+# Display the image in the default image browser.
+    #img.show()
 
-#Display the image in the users default image browser.
-img.show()
+# Uncomment this to show the face rectangles.
+
+#drawFaceRectangles()
 
 
 
