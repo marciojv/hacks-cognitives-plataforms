@@ -1,7 +1,7 @@
 import dlib
 import cv2
 import numpy
-predictor_68_path = "haarcascade/shape_predictor_68_face_landmarks.dat"
+predictor_68_path = "../../models/shape_predictor_68_face_landmarks.dat"
 predictor = dlib.shape_predictor(predictor_68_path)
 detector = dlib.get_frontal_face_detector()
 
@@ -24,7 +24,7 @@ def annotate_landmarks(im, landmarks):
 	cv2.circle(im, pos, 3, color=(0, 255, 255))
 	return im
 
-image = cv2.imread('dataset/silvio.jpg')
+image = cv2.imread('datasets/fotos/silvio.jpg')
 landmarks = get_landmarks(image)
 image_with_landmarks = annotate_landmarks(image, landmarks)
 cv2.imshow('Result', image_with_landmarks)
