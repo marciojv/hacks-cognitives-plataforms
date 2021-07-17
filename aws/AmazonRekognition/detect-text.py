@@ -5,7 +5,7 @@ import boto3
 
 def detect_text(photo, bucket):
 
-    client=boto3.client('rekognition',aws_access_key_id="XXXXXX",aws_secret_access_key="XXXXXX",region_name='us-west-2')
+    client=boto3.client('rekognition',aws_access_key_id="AKIAYTMBWZXAMJFGWJVJ",aws_secret_access_key="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",region_name='us-west-2')
 
     response=client.detect_text(Image={'S3Object':{'Bucket':bucket,'Name':photo}})
                         
